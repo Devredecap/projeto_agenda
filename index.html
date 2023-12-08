@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de contatos</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="./imagens/telephone_159844.png" alt="icone de telefone">
+            <h1>AGENDA DE CONTATOS</h1>
+        </header>
+        <form id="form-agenda">
+            <input id="nome-contato" type="text" required placeholder="Nome do contato">
+            <input name="telefone" id="numero-telefone" type="tel" required placeholder="Número do telefone">
+            <button type="submit">CADASTRAR +</button>
+        </form>
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>TELEFONE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>---</td>
+                    <td>(xx) xxxxx-xxxx</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./main.js"></script>
+    <script>
+        document.getElementById('numero-telefone').addEventListener('input', function (event) {
+            let telefone = event.target.value;
+
+            // Remove todos os caracteres que não sejam dígitos
+            telefone = telefone.replace(/\D/g, '');
+
+            // Formatação do número de telefone (XX) XXXXX-XXXX
+            let telefoneFormatado = '(' + telefone.substring(0, 2) + ') ' + telefone.substring(2, 7) + '-' + telefone.substring(7, 11);
+
+            // Define o valor formatado de volta no campo de entrada
+            event.target.value = telefoneFormatado;
+
+        });
+    </script>
+
+
+</body>
+
+</html>
